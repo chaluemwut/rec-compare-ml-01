@@ -1,9 +1,10 @@
 import numpy as np
-from sklearn.naive_bayes import GaussianNB
+from sklearn.naive_bayes import GaussianNB, MultinomialNB, BernoulliNB
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
 from sklearn.cross_validation import train_test_split
+import copy
 
 def load_data():
     data = np.loadtxt('data/letter.p2', dtype='int', delimiter=',')
@@ -53,9 +54,24 @@ def binary_feature():
     ml.fit(x_train, y_train)
     y_pred = ml.predict(x_test)
     print 'acc : ',accuracy_score(y_test, y_pred)
+    
+def other_dis_test():
+    data = np.loadtxt('data/letter.p2', dtype='int', delimiter=',')
+    data_train = data
+    y = data_train[:,0]
+    x = data_train[:, range(1,len(data_train[0]))]
+    test_size_lst = [0.75, 0.50, 0.25]
+    for train_size in test_size_lst:
+        x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=train_size, random_state=42)
+        ml = [GaussianNB(), MultinomialNB(), BernoulliNB()]
+        for m in ml:
+            m_clone = copy.deepcopy(m)
+            m_clone.fit(x_train, y_train)
+            y_pred = m_clone.predict(x_test)
+            print m_clone,' acc : ',accuracy_score(y_test, y_pred)
 
 def start():
-    binary_feature()
+    other_dis_test()
 
 if __name__ == '__main__':
     start()

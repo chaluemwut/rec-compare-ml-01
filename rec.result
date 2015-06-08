@@ -4,3 +4,15 @@ acc :  0.567164179104    train 0.25  test 0.75
 
 
 https://archive.ics.uci.edu/ml/datasets/SPECT+Heart
+
+
+GaussianNB()  acc :  0.7126
+MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True)  acc :  0.666133333333
+BernoulliNB(alpha=1.0, binarize=0.0, class_prior=None, fit_prior=True)  acc :  0.554
+GaussianNB()  acc :  0.7088
+MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True)  acc :  0.6666
+BernoulliNB(alpha=1.0, binarize=0.0, class_prior=None, fit_prior=True)  acc :  0.5555
+GaussianNB()  acc :  0.7088
+MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True)  acc :  0.6706
+BernoulliNB(alpha=1.0, binarize=0.0, class_prior=None, fit_prior=True)  acc :  0.5644
+
